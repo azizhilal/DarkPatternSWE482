@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopSmart - Products</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Our Amazing Products</h1>
+    </header>
+    <main>
+      <div id="products">
+        <!-- Products will be loaded here -->
+      </div>
+      <div id="cart">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <p>Total Cost: $<span id="totalCost">0.00</span></p>
+        <button onclick="checkout()" id="checkoutBtn">Checkout</button>
+      </div>
+    </main>
+    <script src="js/global.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+      function checkout() {
+        if (cart.length === 0) {
+          alert("Your cart is empty.");
+        } else {
+          // Simulate a checkout process
+          alert(
+            "Your credit card has been charged. Thank you for your purchase!"
+          );
+          // Empty the cart
+          cart = [];
+          updateCartDisplay();
+        }
+      }
+    </script>
+  </body>
+</html>

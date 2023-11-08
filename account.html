@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopSmart - My Account</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>My Account</h1>
+    </header>
+    <main>
+      <p id="accountDetails"></p>
+    </main>
+    <script src="js/global.js"></script>
+    <script>
+      // Load account details
+      if (userData && userData.name) {
+        document.getElementById("accountDetails").innerHTML =
+          "<strong>Account Info</strong><br>" +
+          "Name: " +
+          userData.name +
+          "<br>" +
+          "Email: " +
+          userData.email +
+          "<br>" +
+          "Password: " +
+          userData.password +
+          "<br>" +
+          "Credit Card: " +
+          userData.creditCard;
+      } else {
+        document.getElementById("accountDetails").innerText =
+          "No user information available.";
+      }
+    </script>
+  </body>
+</html>

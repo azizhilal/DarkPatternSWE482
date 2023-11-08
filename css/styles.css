@@ -1,0 +1,33 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #f0e;
+  color: #0ff;
+  text-align: center;
+}
+header {
+  background-color: #00f;
+  color: #ff0;
+}
+button {
+  background-color: #0f0;
+  color: #f00;
+  border: 3px dotted #00f;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+input {
+  display: block;
+  margin: 10px auto;
+}
+#cart {
+  border: 2px solid #ff0;
+  margin-top: 20px;
+}
+#specialOffer {
+  background-color: yellow;
+  color: black;
+  padding: 10px;
+  font-size: 18px;
+}

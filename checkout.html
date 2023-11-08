@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Checkout Screen</title>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Checkout</h1>
+      <div id="timer">You have 5:00 minutes to complete your purchase!</div>
+      <form id="checkoutForm">
+        <input
+          type="text"
+          id="address"
+          placeholder="Shipping Address"
+          required
+        />
+        <input type="text" id="city" placeholder="City" required />
+        <input type="text" id="zip" placeholder="ZIP / Postal Code" required />
+        <div class="form-footer">
+          <input type="submit" value="Complete Purchase" />
+        </div>
+      </form>
+    </div>
+
+    <script src="js/global.js"></script>
+    <script>
+      // Timer script for educational purposes
+      let timeLeft = 300; // 5 minutes in seconds
+      const timerElement = document.getElementById("timer");
+
+      function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerElement.textContent = `You have ${minutes}:${seconds} minutes to complete your purchase!`;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          alert(
+            "Sorry, your time has expired! Please start the checkout process again."
+          );
+        }
+        timeLeft--;
+      }
+
+      const timerInterval = setInterval(updateTimer, 1000);
+
+      document
+        .getElementById("checkoutForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          clearInterval(timerInterval); // Stop the timer as checkout is complete
+          alert("Thank you for your purchase!");
+          // Here you would typically handle the checkout process
+        });
+    </script>
+  </body>
+</html>

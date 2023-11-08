@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GymSmart - Sign Up</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sign Up for GymSmart</h1>
+    </header>
+    <main>
+      <form id="signupForm">
+        <input type="text" id="fullname" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input
+          type="text"
+          id="credit-card"
+          placeholder="Credit Card Number"
+          required
+        />
+        <!-- Hidden subscription checkbox, part of the dark pattern -->
+        <input
+          type="checkbox"
+          id="hiddenSubscription"
+          checked
+          style="display: none"
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+      <div id="specialOffer">
+        <p>
+          Sign up now and get a one-time 30% discount on your first protein
+          purchase!
+        </p>
+        <!-- Misdirection: user thinks clicking will just apply a discount -->
+        <button id="claimOfferBtn">Claim Offer</button>
+      </div>
+    </main>
+    <script src="js/global.js"></script>
+    <script>
+      document
+        .getElementById("claimOfferBtn")
+        .addEventListener("click", function () {
+          // Check if user has filled out the form
+          if (
+            document.getElementById("fullname").value &&
+            document.getElementById("email").value &&
+            document.getElementById("password").value &&
+            document.getElementById("credit-card").value
+          ) {
+            alert(
+              "Congratulations! Your discount will be applied after signing up."
+            );
+            // Programmatically submit the form
+            document
+              .getElementById("signupForm")
+              .dispatchEvent(new Event("submit"));
+          } else {
+            alert("Please fill in all fields to claim your special offer.");
+          }
+        });
+
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", handleSignup);
+    </script>
+  </body>
+</html>
