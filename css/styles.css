@@ -1,33 +1,68 @@
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
-  background-color: #f0e;
-  color: #0ff;
-  text-align: center;
+  background-color: #ff00ff;
+  color: #00ff00;
+  text-align: justify;
 }
+
 header {
-  background-color: #00f;
-  color: #ff0;
+  background-color: #0000ff;
+  color: #ffff00;
+  padding: 50px;
+  border-bottom: 10px dashed red;
+  animation: rotation 0.8s infinite linear;
 }
+
 button {
-  background-color: #0f0;
-  color: #f00;
-  border: 3px dotted #00f;
-  padding: 10px;
-  margin: 10px;
-  display: inline-block;
+  background-color: #00ff00;
+  color: #ff00ff;
   font-weight: bold;
-}
-input {
+  font-size: 24px;
+  border: 5px wavy blue;
+  padding: 20px;
   display: block;
-  margin: 10px auto;
+  margin: 20px auto;
+  text-transform: uppercase;
 }
-#cart {
-  border: 2px solid #ff0;
-  margin-top: 20px;
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #ff0000;
+  padding: 15px;
+  margin: 10px 0;
+  text-align: right;
 }
+
 #specialOffer {
-  background-color: yellow;
-  color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ff4500;
+  color: #ffffff;
   padding: 10px;
-  font-size: 18px;
+  font-size: 2em;
+}
+
+.countdown-timer {
+  font-size: 3em;
+  color: #ff1493;
+  background: #000;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-shadow: 2px 2px #ffffff;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

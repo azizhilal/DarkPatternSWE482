@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShopSmart - Products</title>
+    <title>GymSmart - Products</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -12,31 +12,37 @@
     </header>
     <main>
       <div id="products">
-        <!-- Products will be loaded here -->
+        <!-- Products will be dynamically loaded here -->
       </div>
       <div id="cart">
         <h3>Your Cart</h3>
         <div id="cartItems"></div>
         <p>Total Cost: $<span id="totalCost">0.00</span></p>
-        <button onclick="checkout()" id="checkoutBtn">Checkout</button>
+        <button id="checkoutBtn">Checkout</button>
+      </div>
+      <div class="countdown-timer">
+        <p>Hurry! Sale ends in <span id="timer">05:00</span> minutes!</p>
       </div>
     </main>
     <script src="js/global.js"></script>
     <script src="js/products.js"></script>
     <script>
-      function checkout() {
-        if (cart.length === 0) {
-          alert("Your cart is empty.");
-        } else {
-          // Simulate a checkout process
-          alert(
-            "Your credit card has been charged. Thank you for your purchase!"
-          );
-          // Empty the cart
-          cart = [];
-          updateCartDisplay();
+      // Start a countdown timer
+      var timeLeft = 300; // 5 minutes
+      var timerElement = document.getElementById("timer");
+      var timerId = setInterval(function () {
+        var minutes = parseInt(timeLeft / 60, 10);
+        var seconds = parseInt(timeLeft % 60, 10);
+        timerElement.textContent =
+          minutes.toString().padStart(2, "0") +
+          ":" +
+          seconds.toString().padStart(2, "0");
+        if (--timeLeft < 0) {
+          clearInterval(timerId);
+          timerElement.textContent = "00:00";
+          // Timer expired action here
         }
-      }
+      }, 1000);
     </script>
   </body>
 </html>

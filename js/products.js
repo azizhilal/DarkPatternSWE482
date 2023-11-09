@@ -1,4 +1,4 @@
-// Define products array outside the DOMContentLoaded to be accessible by addToCart
+// products.js
 var products = [
   { id: 1, name: "Whey Protein Powder - Chocolate", price: 49.99 },
   { id: 2, name: "Vegan Pea Protein - Vanilla", price: 59.99 },
@@ -12,25 +12,32 @@ var products = [
   { id: 10, name: "GymSmart Fitness Tracker", price: 129.99 },
 ];
 
+var cart = [];
+
 document.addEventListener("DOMContentLoaded", function () {
   var productsElement = document.getElementById("products");
 
   products.forEach(function (product) {
     productsElement.innerHTML += `
-            <div class="product">
-                <h3>${product.name}</h3>
-                <p>$${product.price.toFixed(2)}</p>
-                <button onclick="addToCart(${product.id})">Add to Cart</button>
-            </div>
-        `;
+      <div class="product">
+        <h3>${product.name}</h3>
+        <p>$${product.price.toFixed(2)}</p>
+        <button onclick="addToCart(${product.id})">Add to Cart</button>
+      </div>
+    `;
   });
+
+  var checkoutButton = document.getElementById("checkoutBtn");
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", checkout);
+  }
 });
 
 function addToCart(productId) {
   var product = products.find((p) => p.id === productId);
   cart.push(product);
-  // Sneak another product into the basket
-  var sneakyProduct = products.find((p) => p.id !== productId);
+  // Sneak another product into the basket (dark pattern)
+  var sneakyProduct = products.find((p) => p.id === 5); // For example, always add the Yoga Mat
   cart.push(sneakyProduct);
   updateCartDisplay();
 }
@@ -54,7 +61,9 @@ function updateCartDisplay() {
 }
 
 function checkout() {
-  // Instead of checking out, redirect to add more items
-  alert("Wait! Before you check out, have you seen our latest product offers?");
+  // Instead of checking out, redirect to add more items (dark pattern)
+  alert(
+    "Don't miss out on our special offer! Add more to your cart before checking out."
+  );
   window.location.href = "product-listing.html";
 }
